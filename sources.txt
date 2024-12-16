@@ -1,0 +1,5 @@
+https://www.favcars.com/
+https://www.freepik.com/
+https://fonts.google.com/
+https://cdnjs.com/libraries/react-is
+https://swiperjs.com/

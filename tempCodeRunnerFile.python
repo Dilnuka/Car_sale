@@ -1,0 +1,105 @@
+class ChessPiece:
+    def __init__(self, color):
+        self.color = color
+
+
+class Pawn(ChessPiece):
+    def __init__(self, color):
+        super().__init__(color)
+
+
+class Rook(ChessPiece):
+    def __init__(self, color):
+        super().__init__(color)
+
+
+class Knight(ChessPiece):
+    def __init__(self, color):
+        super().__init__(color)
+
+
+class Bishop(ChessPiece):
+    def __init__(self, color):
+        super().__init__(color)
+
+
+class Queen(ChessPiece):
+    def __init__(self, color):
+        super().__init__(color)
+
+
+class King(ChessPiece):
+    def __init__(self, color):
+        super().__init__(color)
+
+
+class ChessBoard:
+    def __init__(self):
+        self.board = [[None] * 8 for _ in range(8)]
+        self.initialize_board()
+
+    def initialize_board(self):
+        # Initialize pawns
+        for i in range(8):
+            self.board[1][i] = Pawn("white")
+            self.board[6][i] = Pawn("black")
+        # Initialize rooks
+        self.board[0][0] = Rook("white")
+        self.board[0][7] = Rook("white")
+        self.board[7][0] = Rook("black")
+        self.board[7][7] = Rook("black")
+        # Initialize knights
+        self.board[0][1] = Knight("white")
+        self.board[0][6] = Knight("white")
+        self.board[7][1] = Knight("black")
+        self.board[7][6] = Knight("black")
+        # Initialize bishops
+        self.board[0][2] = Bishop("white")
+        self.board[0][5] = Bishop("white")
+        self.board[7][2] = Bishop("black")
+        self.board[7][5] = Bishop("black")
+        # Initialize queens
+        self.board[0][3] = Queen("white")
+        self.board[7][3] = Queen("black")
+        # Initialize kings
+        self.board[0][4] = King("white")
+        self.board[7][4] = King("black")
+
+    def print_board(self):
+        for row in self.board:
+            print(row)
+
+    def is_valid_move(self, start, end, color):
+        # Implement move validation logic
+        return True
+
+    def make_move(self, start, end, color):
+        if self.is_valid_move(start, end, color):
+            # Implement move logic
+            return True
+        else:
+            print("Invalid move")
+            return False
+
+
+class ChessGame:
+    def __init__(self):
+        self.board = ChessBoard()
+        self.current_player = "white"
+
+    def play(self):
+        while True:
+            self.board.print_board()
+            print(f"{self.current_player}'s turn")
+            start = input("Enter the start position (e.g., a2): ")
+            end = input("Enter the end position (e.g., a4): ")
+            if self.board.make_move(start, end, self.current_player):
+                self.switch_player()
+
+    def switch_player(self):
+        self.current_player = "black" if self.current_player == "white" else "white"
+
+
+if __name__ == "__main__":
+    game = ChessGame()
+    game.play()
